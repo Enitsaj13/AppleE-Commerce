@@ -11,7 +11,7 @@ export interface InputTypes {
     placeholder: string
     secureTextEntry: any
     keyboardType?: any
-    onFocus?: (() => void) | undefined
+    onFocus?: ({ nativeEvent }: any) => void
     autoCorrect?: boolean
     id?: any
     autoCapitalize?: string

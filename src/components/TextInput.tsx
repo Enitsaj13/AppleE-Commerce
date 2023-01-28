@@ -8,7 +8,7 @@ const Input = ({
 }: InputTypes) => {
     return (
         <TextInput
-            className='flex-1 px-[12px]'
+            className='flex-1 px-[12px] font-medium'
             placeholder={placeholder}
             secureTextEntry={secureTextEntry}
             keyboardType={keyboardType}

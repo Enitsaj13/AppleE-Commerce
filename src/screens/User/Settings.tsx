@@ -3,12 +3,12 @@ import React from 'react'
 
 type Props = {}
 
-const Registration = (props: Props) => {
+const Settings = (props: Props) => {
     return (
         <View>
-            <Text>Registration</Text>
+            <Text>Settings</Text>
         </View>
     )
 }
 
-export default Registration
+export default Settings

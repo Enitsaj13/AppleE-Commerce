@@ -1,60 +1,79 @@
 import React from 'react'
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs'
-import Icon from 'react-native-vector-icons/FontAwesome'
+import HomeIcon from 'react-native-vector-icons/Feather'
+import SearchIcon from 'react-native-vector-icons/EvilIcons'
+import UserIcon from 'react-native-vector-icons/FontAwesome'
+import FaveIcon from 'react-native-vector-icons/Fontisto'
 
 /* --- screen stack navigator --- */
-import Login from '@src/screens/User/Login'
 import Home from '@src/navigations/HomeStack'
 import User from '@src/navigations/UserStack'
+import Search from '@src/screens/Product/Search'
+import Wishlist from '@src/screens/Product/Favorite'
+
+import FaveIcons from '@src/screens/Product/FaveIcon'
 
 /* --- tab type --- */
 export type RootTabParamList = {
-    Login: { screen: string }
     Home: { screen: string }
+    Search: { screen: string }
+    Wishlist: { screen: string }
     User: { screen: string }
 }
 
 /* --- tab navigator --- */
 const Tab = createBottomTabNavigator<RootTabParamList>()
 
-const MainNavigator = () => {
+const MainNavigator = ({ faveItems }: any) => {
     return (
         <Tab.Navigator
-            initialRouteName='Login'
+            initialRouteName='Home'
             screenOptions={{
                 headerShown: false,
                 tabBarShowLabel: false,
-                tabBarActiveTintColor: '#0ea5e9',
+                tabBarActiveTintColor: '#1e293b',
                 tabBarInactiveTintColor: '#b8bece',
-            }}
-        >
-            <Tab.Screen
-                name='Login'
-                component={Login}
-                options={{
-                    tabBarIcon: ({ color, size }) => (
-                        <Icon name='user' color={color} size={size} />
-                    ),
-                }}
-            />
-
-
-            <Tab.Screen
-                name='User'
-                component={User}
-                options={{
-                    tabBarIcon: ({ color, size }) => (
-                        <Icon name='user' color={color} size={size} />
-                    ),
-                }}
-            />
+            }}>
 
             <Tab.Screen
                 name='Home'
                 component={Home}
                 options={{
-                    tabBarIcon: ({ color, size }) => (
-                        <Icon name='home' color={color} size={size} />
+                    tabBarIcon: ({ color }) => (
+                        <HomeIcon name='home' color={color} size={22} />
+                    ),
+                }}
+            />
+
+            <Tab.Screen
+                name='Search'
+                component={Search}
+                options={{
+                    tabBarIcon: ({ color }) => (
+                        <SearchIcon name='search' color={color} size={30} />
+                    ),
+                }}
+            />
+
+            <Tab.Screen
+                name='Wishlist'
+                component={Wishlist}
+                options={{
+                    tabBarIcon: ({ color }) => (
+                        <>
+                            <FaveIcon name='heart-alt' color={color} size={18} />
+                            <FaveIcons faveItems={faveItems} />
+                        </>
+                    ),
+                }}
+            />
+
+            <Tab.Screen
+                name='User'
+                component={User}
+                options={{
+                    tabBarIcon: ({ color }) => (
+                        <UserIcon name='user-o' color={color} size={21} />
                     ),
                 }}
             />

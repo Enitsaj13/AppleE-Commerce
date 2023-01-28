@@ -7,7 +7,6 @@ import ProductContainer from '@src/screens/Product/ProductContainer'
 /* --- stack type --- */
 export type RootStackParamList = {
     ProductContainer: undefined
-    Search: undefined
 }
 
 /* --- home stack --- */
@@ -17,13 +16,6 @@ const HomeStack = () => {
     return (
         <Stack.Navigator>
             <Stack.Screen name='ProductContainer' component={ProductContainer}
-                options={{
-                    headerShown: false,
-                    ...TransitionPresets.SlideFromRightIOS
-                }}
-            />
-
-            <Stack.Screen name='Search' component={ProductContainer}
                 options={{
                     headerShown: false,
                     ...TransitionPresets.SlideFromRightIOS
